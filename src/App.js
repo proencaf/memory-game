@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 const cardImages = [
   { src: './imgs/one.png' },
-  { src: './imgs/two.jpg' },
+  { src: './imgs/two.png' },
   { src: './imgs/three.png' },
   { src: './imgs/four.png' },
   { src: './imgs/five.png' },
