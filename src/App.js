@@ -29,7 +29,15 @@ function App() {
   // handle a choice
 
   const handleChoice = (card) => {
-    console.log(card)
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card)
+  }
+
+  //reset choice & increase turn variable
+
+  const resetTurn = () => {
+    setChoiceOne(null)
+    setChoiceTwo(null)
+    setTurns((prevTurns) => prevTurns + 1)
   }
 
   return (
