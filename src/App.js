@@ -3,12 +3,12 @@ import { useEffect, useState } from 'react'
 import SingleCard from './components/SingleCard'
 
 const cardImages = [
-  { src: './imgs/one.png' },
-  { src: './imgs/two.png' },
-  { src: './imgs/three.png' },
-  { src: './imgs/four.png' },
-  { src: './imgs/five.png' },
-  { src: './imgs/six.png' },
+  { src: './imgs/one.png', matched: false },
+  { src: './imgs/two.png', matched: false },
+  { src: './imgs/three.png', matched: false },
+  { src: './imgs/four.png', matched: false },
+  { src: './imgs/five.png', matched: false },
+  { src: './imgs/six.png', matched: false },
 ]
 
 function App() {
@@ -45,14 +45,23 @@ function App() {
   useEffect(() => {
     if (choiceOne && choiceTwo) {
       if (choiceOne.src === choiceTwo.src) {
-        console.log('those cards match')
+        setCards((prevCards) => {
+          return prevCards.map((card) => {
+            if (card.src === choiceOne.src) {
+              return { ...card, matched: true }
+            } else {
+              return card
+            }
+          })
+        })
         resetTurn()
       } else {
-        console.log("those cards don't match")
         resetTurn()
       }
     }
   }, [choiceOne, choiceTwo])
+
+  console.log(cards)
 
   return (
     <div className='App'>
